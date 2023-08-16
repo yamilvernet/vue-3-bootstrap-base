@@ -1,29 +1,58 @@
 # vue-start
 
-This template should help get you started developing with Vue 3 in Vite.
+esta es una plantilla de Vue 3 con el enrutador y Bootstrap 5
 
-## Recommended IDE Setup
+## Como usar las clases y ejecutar acciones
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+    <button 
+    class="btn btn-primary" 
+    data-bs-target="#collapseTarget" 
+    data-bs-toggle="collapse">
+    Bootstrap collapse
+    </button>
+    <div class="collapse py-2" id="collapseTarget">
+    This is the toggle-able content!
+    </div>
 
-## Customize configuration
+## O podes importar los compoenetes
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+    import { Popover } from bootstrap;
 
-## Project Setup
+    const popover = Vue.component('bsPopover', {
+    template: `
+        <slot/>
+    `,
+    props: {
+        content: {
+        required: false,
+        default: '',
+        },
+        title: {
+        default: 'My Popover',
+        },
+        trigger: {
+        default: 'click',
+        },
+        delay: {
+        default: 0,
+        },
+        html: {
+        default: false,
+        },
+    },
+    mounted() {
+        // pass bootstrap popover options from props
+        var options = this.$props
+        var ele = this.$slots.default[0].elm
+        new Popover(ele,options)
+    },
+    })
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+    <bs-popover
+    title="Hello Popover"
+    content="This is my content for the popover!"
+    trigger="hover">
+        <button class="btn btn-danger">
+        Hover for popover
+        </button>
+    </bs-popover>
