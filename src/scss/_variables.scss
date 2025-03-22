@@ -1,0 +1,52 @@
+// Colores personalizados
+$primary: #12714B;
+$secondary: #FDDB32; 
+$accent: #ff6b6b;
+$success: #25d366;
+$warning: #ffc107; // Puedes personalizar este también si es necesario.
+$danger: #dc3545;  // O mantener los valores predeterminados de Bootstrap.
+$info: #17a2b8;
+$light: rgb(244, 251, 246);
+
+// Extender el mapa de colores de Bootstrap
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "accent": $accent,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "info": $info,
+  "light":$light
+);
+
+// $secondary: #fae800;
+$secondary-text: color-contrast($secondary); // Genera automáticamente blanco o negro dependiendo del contraste.
+
+.btn-secondary {
+  color: $secondary-text !important;
+}
+
+
+
+
+$secondary-hover: darken($secondary, 10%);
+$secondary-focus: lighten($secondary, 10%);
+$secondary-active: darken($secondary, 20%);
+
+$text-color: #1e004d;
+
+// Otros estilos personalizados
+$border-radius: .75rem;
+
+// Container
+$container-max-widths: (
+  sm: 540px,
+  md: 640px,
+  lg: 760px,
+  xl: 840px,
+  xxl: 960px
+);
+
+
+

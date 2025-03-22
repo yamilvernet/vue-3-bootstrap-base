@@ -1,17 +1,35 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView,useRoute } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
+import Header from './views/template/Header.vue'
+import Footer from './views/template/Footer.vue'
+import { get_or_load_data_from } from './utils'
+import { ref,onMounted } from 'vue'
+
+
+const tours = ref(null)
+// tours.value = await get_or_load_data_from('tours')
+// tours.value = 'hola'
+
+
+// console.log('tenemos tours en app',tours.value);
+onMounted(async () => {
+  console.log('mounted app');
+  tours.value = Object.values(await get_or_load_data_from('tours'))
+  console.log('tenemos tours en app',tours.value);
+})
+
+
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>Hola</h1>
-        <div class="alert bg-success w-100">Este es un alert feliz</div>
-      </div>
-    </div>
-  </div>
+  <!-- Header -->
+  <Header :tours="tours"></Header>
+  <div v-if="useRoute().meta.noHeader==true" style="height: 90px;"></div>
+  <!-- Main -->
+  <RouterView />
+  <!-- Footer -->
+   <Footer :tours="tours"></Footer>
 </template>
 
 <style scoped>

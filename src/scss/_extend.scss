@@ -1,0 +1,81 @@
+// own styles
+.d-flex-center-between {
+    @extend .d-flex;
+    @extend .justify-content-between;
+    @extend .align-items-center;
+}
+
+.d-flex-center-start {
+    @extend .d-flex;
+    @extend .justify-content-start;
+    @extend .align-items-center;
+}
+
+.d-flex-center-center {
+    @extend .d-flex;
+    @extend .justify-content-center;
+    @extend .align-items-center;
+}
+
+.d-flex-center-end {
+    @extend .d-flex;
+    @extend .justify-content-end;
+    @extend .align-items-center;
+}
+
+.d-flex-end-start {
+    @extend .d-flex;
+    @extend .justify-content-start;
+    @extend .align-items-end;
+}
+
+
+
+.d-flex-start-d-flex-lg-end {
+    @extend .d-flex-center-start;
+}
+
+@media (min-width:996px){
+    .d-flex-start-d-flex-lg-end {
+        justify-content: end !important;
+    }
+}
+
+// Rounded
+.rounded-sm {
+    border-radius: 14px;
+}
+
+/*
+ * secondary Colour
+ */
+
+.bg-secondary {
+    background-color: $secondary;
+    color: darken($primary, 20%);
+}
+
+.text-secondary {
+    color: $secondary;
+}
+
+.btn-secondary {
+    background-color: $secondary;
+    border-color: $secondary;
+    color: darken($primary, 13%);
+
+    &:hover {
+        background-color: $secondary-hover;
+        border-color: $secondary-hover;
+    }
+
+    &:focus {
+        background-color: $secondary-focus;
+        border-color: $secondary-focus;
+    }
+
+    &:active {
+        background-color: $secondary-active;
+        border-color: $secondary-active;
+    }
+}
